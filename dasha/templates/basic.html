@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Главная страница {% endblock %}</title>
+</head>
+<body>
+<div class="top_palka"></div>
+    <div class="hеader">
+            <a class="logo" href="#">Заявки</a>
+        {% block sidebar %}
+        <nav class="links">
+            <a  href="#">Главная страница</a>
+            {% if user.is_authenticated %}
+                <a href="#">Личный кабинет</a>
+                <a href="#">Выйти</a>
+            {% else %}
+                <a  href="#">Войти</a>
+                <a  href="{% url 'register' %}">Регистрация</a>
+            {% endif %}
+            </nav>
+        {% endblock %}
+    </div>
+
+<main>
+        {% block content %} {% endblock %}
+</main>
+
+<footer>
+
+    {% block footer %}
+    <div class="footer">
+        <div class="footer_blocks">
+            <div class="links_quick">
+                <p class="text_links">Ссылки на нас</p>
+                <a href="#">о нас</a>
+                <a href="#"></a>
+            </div>
+            <div class="about">
+                <p class="text_top_about">О нас</p>
+                <p class="text_bot_about"> Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты.
+                    Вдали свой дорогу он
+                    вопроса великий! Пор, имеет однажды там имени вскоре журчит силуэт осталось свое предупредила, до, великий
+                    вопрос!</p>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</footer>
+</body>
+</html>
